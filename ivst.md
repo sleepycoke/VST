@@ -25,7 +25,7 @@ opam repo add coq-released https://coq.inria.fr/opam/released
 opam repo add coq-released https://coq.inria.fr/opam/released
 eval $(opam env)
 opam install coq-lithium
-opam install coq-compcert.3.7+8.12~coq_platform
+opam install coq-compcert.3.13
 ```
 
 Add "or-else 8.19.0" to Line 24 of Makefile
