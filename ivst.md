@@ -7,6 +7,7 @@ Install opam:
 
 ```(bash)
 opam switch create vst_on_iris ocaml-variants.4.14.1+options ocaml-option-flambda
+eval $(opam evn --switch=vst_on_iris)
 ```
 
 Install dependencies:
@@ -15,8 +16,20 @@ Install dependencies:
 opam repo add coq-released https://coq.inria.fr/opam/released
 opam repo add iris-dev https://gitlab.mpi-sws.org/iris/opam.git
 opam pin add https://github.com/mansky1/ora.git
-opam pin add builddep/
+opam switch vst_on_iris
+eval $(opam env)
+git submodule update --init ora
+opam install coq-flocq
+opam install coq-iris.4.2.0
+opam repo add coq-released https://coq.inria.fr/opam/released
+opam repo add coq-released https://coq.inria.fr/opam/released
+eval $(opam env)
+opam install coq-lithium
+opam install coq-compcert.3.7+8.12~coq_platform
 ```
+
+Add "or-else 8.19.0" to Line 24 of Makefile
+
 
 At this point, we use [`Makefile`](./Makefile)
 Compile the [proof for the list reverse function](./progs64/verif_reverse2.v):
